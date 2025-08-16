@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    
+  <link rel="stylesheet" href="img.css">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <img id="myImage" src="https://letsenhance.io/static/73136da51c245e80edc6ccfe44888a99/396e9/MainBefore.jpg" alt="Picture of an animal">
+  </div>
+  
+  
+  <button id="showBtn">Show Image</button>
+  <br><br>
+  <button id="hideBtn">Hide Image</button>
+  <script>
+    const showBtn = document.getElementById('showBtn');
+    const hideBtn = document.getElementById('hideBtn');
+    const img = document.getElementById('myImage');
+
+    showBtn.addEventListener('click', () => {
+      img.style.display = 'block';
+    });
+
+    hideBtn.addEventListener('click', () => {
+      img.style.display = 'none';
+    });
+  </script>
+</body>
+</html>

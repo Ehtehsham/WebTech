@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Course Registration</title>
+  <link rel="stylesheet" href="formcreation.css">
+</head>
+<body>
+
+  <form id="registrationForm" action="javascript:void(0)">
+    <h1>Course Registration Form</h1>
+
+    <div>
+      <label for="fullname">Full Name:</label>
+      <input type="text" id="fullname" name="fullname" required>
+    </div>
+
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+
+    <div>
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" min="16" max="35" required>
+    </div>
+
+    <div>
+      <label for="course">Select Course:</label>
+      <select id="course" name="course" required>
+        <option value="">--Choose a course--</option>
+        <option value="html">HTML</option>
+        <option value="css">CSS</option>
+        <option value="javascript">JavaScript</option>
+        <option value="python">Python Programming</option>
+        <option value="csharp">C#</option>
+      </select>
+    </div>
+
+    <br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    document.getElementById("registrationForm").addEventListener("submit", function (e) {
+      const name = document.getElementById("fullname").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const age = parseInt(document.getElementById("age").value);
+      const course = document.getElementById("course").value;
+
+      let isValid = true;
+      let messages = [];
+
+      if (name.length < 3) {
+        isValid = false;
+        messages.push("Full Name must be at least 3 characters.");
+      }
+
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        isValid = false;
+        messages.push("Enter a valid email address.");
+      }
+
+      if (isNaN(age) || age < 16 || age > 35) {
+        isValid = false;
+        messages.push("Age must be between 16 and 35.");
+      }
+
+      if (course === "") {
+        isValid = false;
+        messages.push("Please select a course.");
+      }
+
+      if (!isValid) {
+        alert(messages.join("\n"));
+      } else {
+        alert("Form submitted successfully!");
+        
+       
+      }
+    });
+  </script>
+
+</body>
+</html>

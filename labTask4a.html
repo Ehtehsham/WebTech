@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+   <h1>Simple Counter</h1>
+   <h2> use - or + button to change </h2>
+  <div id="count">0</div>
+  <button onclick="decrement()">- Decrement</button>
+  <button onclick="increment()">+ Increment</button>
+
+  <script>
+    let count = 0;
+
+    function updateDisplay() {
+      document.getElementById("count").innerText = count;
+    }
+
+    function increment() {
+      count++;
+      updateDisplay();
+    }
+
+    function decrement() {
+      count--;
+      updateDisplay();
+    }
+  </script
+
+  
+</body>
+</html>

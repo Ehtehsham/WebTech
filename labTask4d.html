@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Password Validation Form</title>
+  <link rel="stylesheet" href="s.css" />
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Create Account</h2>
+
+    <input type="password" id="password" placeholder="Enter password" oninput="validatePassword()" />
+    <small id="strengthText" class="message"></small>
+
+    <input type="password" id="confirmPassword" placeholder="Confirm password" oninput="checkMatch()" />
+    <small id="matchText" class="message"></small>
+
+    <button onclick="submitForm()">Submit</button>
+  </div>
+
+  <script>
+    function validatePassword() {
+      const password = document.getElementById("password").value;
+      const strengthText = document.getElementById("strengthText");
+
+      const strongRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+
+      if (password === "") {
+        strengthText.textContent = "Password is required.";
+        strengthText.style.color = "red";
+        return false;
+      }
+
+      if (strongRegex.test(password)) {
+        strengthText.textContent = "Password is strong ✔️";
+        strengthText.style.color = "green";
+        return true;
+      } else {
+        strengthText.textContent = "Password must be at least 8 characters, include uppercase, lowercase, number, and special character.";
+        strengthText.style.color = "red";
+        return false;
+      }
+    }
+
+    function checkMatch() {
+      const password = document.getElementById("password").value;
+      const confirm = document.getElementById("confirmPassword").value;
+      const matchText = document.getElementById("matchText");
+
+      if (confirm === "") {
+        matchText.textContent = "Please confirm your password.";
+        matchText.style.color = "red";
+        return false;
+      }
+
+      if (password === confirm) {
+        matchText.textContent = "Passwords match ✔️";
+        matchText.style.color = "green";
+        return true;
+      } else {
+        matchText.textContent = "Passwords do not match ❌";
+        matchText.style.color = "red";
+        return false;
+      }
+    }
+
+    function submitForm() {
+      const isPasswordValid = validatePassword();
+      const isMatchValid = checkMatch();
+
+      if (isPasswordValid && isMatchValid) {
+        alert("✅ Form submitted successfully!");
+        // You can clear the form here if needed:
+        // document.getElementById("password").value = "";
+        // document.getElementById("confirmPassword").value = "";
+      } else {
+        alert("❌ Please fix the errors before submitting.");
+      }
+    }
+  </script>
+
+</body>
+</html>

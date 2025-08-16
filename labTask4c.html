@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Change Div Background</title>
+  <link rel="stylesheet" href="labTask4c.css">
+</head>
+<body>
+
+  <h2>Enter a color name or hex code:</h2>
+  <input type="text" id="colorInput" placeholder="e.g. red, #3498db">
+  <button onclick="changeBoxColor()">Apply Color</button>
+
+  <div id="colorBox">Color Box</div>
+
+  <script>
+  let toggle = false;
+  let intervalId;
+
+  function changeBoxColor() {
+    const userColor = document.getElementById("colorInput").value;
+    const box = document.getElementById("colorBox");
+    
+   
+    box.style.backgroundColor = userColor;
+    toggle = true;
+
+  
+    clearInterval(intervalId);
+
+   
+    intervalId = setInterval(() => {
+      toggle = !toggle;
+      box.style.backgroundColor = toggle ? userColor : "Transparent";
+    }, 5000);
+  }
+</script>
+
+
+</body>
+</html>
